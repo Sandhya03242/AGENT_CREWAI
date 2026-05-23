@@ -6,8 +6,6 @@ import os
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
 
-llm=LLM(model=os.getenv("MODEL"),base_url=os.getenv("OPENAI_BASE_URL"),api_key=os.getenv("OPENAI_API_KEY"))
-
 @CrewBase
 class CrewAgent():
     """Agent crew"""
@@ -26,7 +24,6 @@ class CrewAgent():
         return Agent(
             config=self.agents_config['researcher'], # type: ignore[index]
             verbose=True,
-            llm=llm
         )
 
     @agent
@@ -34,7 +31,6 @@ class CrewAgent():
         return Agent(
             config=self.agents_config['reporting_analyst'], # type: ignore[index]
             verbose=True,
-            llm=llm
         )
 
     # To learn more about structured task outputs,
