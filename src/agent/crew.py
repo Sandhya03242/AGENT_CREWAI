@@ -1,7 +1,6 @@
-from crewai import Agent, Crew, Process, Task
+from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
-from crewai import LLM
 import os
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
@@ -10,7 +9,7 @@ import os
 llm=LLM(model=os.getenv("MODEL"),base_url=os.getenv("OPENAI_BASE_URL"),api_key=os.getenv("OPENAI_API_KEY"))
 
 @CrewBase
-class Agent():
+class CrewAgent():
     """Agent crew"""
 
     agents: list[BaseAgent]
